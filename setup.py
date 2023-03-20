@@ -87,7 +87,7 @@ REQUIRES_PYTHON = ">=" + ".".join(map(str, REQUIRES_PYTHON))
 requirements = parse_requirements(
     os.path.join(os.path.dirname(__file__), "requirements.txt"), session=PipSession()
 )
-about["install_requires"] = [str(req.req) for req in requirements]
+about["install_requires"] = [str(req) for req in requirements]
 
 # ------------------------------------------------
 # Versions handling
