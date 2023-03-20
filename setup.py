@@ -12,7 +12,7 @@ from setuptools import find_packages, setup, Command
 
 try:
     from pip._internal.req import parse_requirements
-    from pip._internal.commands.download import PipSession
+    from pip._internal.network.session import PipSession
 except ImportError:
     from pip.req import parse_requirements
     from pip.download import PipSession
