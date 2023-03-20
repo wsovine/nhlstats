@@ -12,8 +12,10 @@ def game_summary(gs):
     return {
         "date": gs["gameDate"][:10],
         "game_id": gs["gamePk"],
+        "home_id": gs["teams"]["home"]["team"]["id"],
         "home_team": gs["teams"]["home"]["team"]["name"],
         "home_score": gs["teams"]["home"]["score"],
+        "away_id": gs["teams"]["away"]["team"]["id"],
         "away_team": gs["teams"]["away"]["team"]["name"],
         "away_score": gs["teams"]["away"]["score"],
         "season": gs["season"],
@@ -54,6 +56,7 @@ def event(ev, max_players=1):
         "is_corsi": event_type in CORSI_EVENTS,
         "is_fenwick": event_type in FENWICK_EVENTS,
         "team_for": ev.get("team", {}).get("triCode"),
+        "team_for_id": ev.get("team", {}).get("id")
     }
 
     e["shot_distance"] = _calculate_distance(e) if e["is_corsi"] else None
@@ -87,6 +90,7 @@ def shift(sh):
         "start_time": sh["startTime"],
         "end_time": sh["endTime"],
         "duration": sh["duration"],
+        "team_id": sh["teamId"],
         "team_abbreviation": sh["teamAbbrev"],
         "event_description": sh["eventDescription"],
         "event_details": sh["eventDetails"],
